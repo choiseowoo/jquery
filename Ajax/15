@@ -1,0 +1,22 @@
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax Request</title>
+	<script>
+		function sendRequest() {
+			var httpRequest = new XMLHttpRequest();
+			httpRequest.onreadystatechange = function() {
+				if (httpRequest.readyState == XMLHttpRequest.DONE && httpRequest.status == 200 ) {
+					document.getElementById("text").innerHTML = httpRequest.responseText;
+					self.setTimeout("sendRequest()", 500);	// 응답을 받은 후 0.5초 뒤에 다시 Ajax 요청을 보냄.
+				}
+			};
+			httpRequest.open("GET", "/examples/media/ajax_periodic_request.php");
+			httpRequest.send();
+		}
+		sendRequest();
+	</script>
+</head>
+<body>
+	<h1>주기적으로 Ajax 요청</h1>
+	<p id="text"></p>	
+</body>
