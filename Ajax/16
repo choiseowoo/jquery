@@ -1,0 +1,28 @@
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax Request</title>
+	<script>
+		var httpRequest;
+		function sendRequest() {
+			httpRequest = new XMLHttpRequest();
+			httpRequest.onreadystatechange = function() {
+				if (httpRequest.readyState == XMLHttpRequest.DONE && httpRequest.status == 200 ) {
+					document.getElementById("text").innerHTML = httpRequest.responseText;
+				}
+			};
+			httpRequest.open("GET", "/examples/media/ajax_request_abort.php");
+			httpRequest.send();
+		}
+		function abortRequest() {
+			httpRequest.abort();
+			document.getElementById("text").innerHTML = "Ajax 요청을 취소";
+		}
+	</script>
+</head>
+<body>
+	<h1>Ajax 요청의 취소</h1>
+	<button type="button" onclick="sendRequest()">Ajax 요청 보내기</button>
+	<button type="button" onclick="abortRequest()">Ajax 요청 취소</button>
+	<p id="text"></p>
+	
+</body>
