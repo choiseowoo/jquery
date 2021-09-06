@@ -1,0 +1,26 @@
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax Doctype</title>
+	<script>
+		function sendRequest() {
+			var httpRequest = new XMLHttpRequest();
+			httpRequest.onreadystatechange = function() {
+				if (httpRequest.readyState == XMLHttpRequest.DONE && httpRequest.status == 200 ) {
+					// 텍스트 파일의 응답 처리는 responseText 속성을 사용해야 함.
+					document.getElementById("text").innerHTML = httpRequest.responseText;
+					// 텍스트 파일의 응답 처리에 responseXML 속성을 사용하면 null을 반환함.
+					document.getElementById("xml").innerHTML = httpRequest.responseXML;
+				}
+			};
+			httpRequest.open("GET", "/examples/media/ajax_doctype_text.php");
+			httpRequest.send();
+		}
+	</script>
+</head>
+<body>
+	<h1>텍스트 파일의 응답 처리</h1>
+	<button type="button" onclick="sendRequest()">Ajax 요청 보내기</button>
+	<p>Ajax에서는 서버로부터 응답으로 받은 텍스트 파일을 문자열로 반환하여 처리할 수 있습니다.</p>
+	<p id="text"></p>
+	<p id="xml"></p>
+</body>
