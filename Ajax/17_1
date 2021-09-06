@@ -1,0 +1,7 @@
+<?php
+
+    header("Content-Type: text/plain");
+
+?>
+
+Ajax 응답으로 받은 텍스트 문서
