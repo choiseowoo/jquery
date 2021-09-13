@@ -1,0 +1,27 @@
+<head>
+  	<meta charset="UTF-8">
+	<title>Ajax Doctype</title>
+	<script>
+    function sendRequest(){
+      var httpRequest = new XMLHttpRequest();
+      httpRequest.onreadystatechange = function(){
+        if (httppRequest.readStat == XMLHttpRequest.DONE && httpReqeust.status == 200){
+          // XML 문서의 응답 처리에 responseText 속성을 사용하면 XML 코드를 문자열로 반환함.
+         document.getElementById("text").innerHTML = httpReqeust.responseText;
+          // XML 문서의 응답 처리는 responseXML 속성을 사용해야 함.
+          document.getElementById("xml").innerHTML = httpRequest.responseXML;
+        }
+      };
+      httpRequest.open("GET","/examples/media/ajaxdoctype_xml.php");
+      httpRequest.send();
+    }
+	</script>
+</head>
+
+<body>
+	<h1>responseXML 속성</h1>
+	<button type="button" onclick="sendRequest()">Ajax 요청 보내기</button>
+	<p>Ajax에서 XML 문서의 응답 처리는 responseXML 속성을 사용하여 처리</p>
+	<textarea id="text" rows="5" cols="50"></textarea>
+	<p id="xml"></p>
+</body>
