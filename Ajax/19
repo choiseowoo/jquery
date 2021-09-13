@@ -1,0 +1,27 @@
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax Doctype</title>
+	<script>
+    function sendReqeust(){
+      var httpRequest, xmlDate, result, i;
+      httpRequest = new XMLHttpRequest();
+      httpRequest.onreadystatechange = function(){
+        if(httpRequest.readyState == XMLHttpRequest.DONE && httpRequest.status == 200){
+          xmlDate = httpReqeust.responseXML;
+          document.getElementById("text").innerHTML =
+            xmlData.getElementsByTagName("b")[0].firstChild.nodeValue;
+            // XML 데이터의 첫 번째 <b>태그의 텍스트 노드의 값을 반환함.
+        }
+      };
+      httpRequest.open("GET", "/examples/media/ajax_doctype_xml.php");
+			httpRequest.send();
+    }
+	</script>
+</head>
+
+<body>
+	<h1>XML 데이터의 응답 처리</h1>
+	<button type="button" onclick="sendRequest()">Ajax 요청 보내기</button>
+	<p>Ajax에서는 서버로부터 응답으로 받은 XML 데이터를 XML DOM 객체로 반환하여 처리할 수 있습니다.</p>
+	<p id="text"></p>
+</body>
