@@ -1,0 +1,20 @@
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax jQuery</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		$(function() {
+			$("#requestBtn").on("click", function() {
+				// GET 방식으로 서버에 HTTP 요청을 보냄.
+				$.get("/examples/media/jquery_ajax_data.txt", function(data, status) {
+					$("#text").html(data + status);	// 전송받은 데이터와 전송 성공 여부를 보여줌
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<h1>$.get() 메소드</h1>
+	<button id="requestBtn">GET 방식으로 데이터 불러오기</button>
+	<p id="text"></p>	
+</body>
