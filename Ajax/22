@@ -1,0 +1,23 @@
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax jQuery</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		$(function() {
+			$("#requestBtn").on("click", function() {
+				// POST 방식으로 서버에 HTTP 요청을 보냄.
+				$.post("/examples/media/request_ajax.php", 
+					{ name: "이순신", grade: "A+" },	// 서버가 필요한 정보를 같이 보냄.
+					function(data, status) {
+						$("#text").html(data + "<br>" + status);	// 전송받은 데이터와 전송 성공 여부를 보여줌.
+					}
+				);
+			});
+		});
+	</script>
+</head>
+<body>
+	<h1>$.post() 메소드</h1>
+	<button id="requestBtn">POST 방식으로 데이터 불러오기</button>
+	<p id="text"></p>
+</body>
